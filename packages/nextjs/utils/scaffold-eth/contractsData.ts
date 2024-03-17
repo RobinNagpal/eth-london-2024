@@ -5,3 +5,8 @@ export function getAllContracts() {
   const contractsData = contracts?.[scaffoldConfig.targetNetworks[0].id];
   return contractsData ? contractsData : {};
 }
+
+export function getAllContractsByChain(chainId: number) {
+  const contractsData = contracts?.[chainId];
+  return contractsData ? contractsData : {};
+}

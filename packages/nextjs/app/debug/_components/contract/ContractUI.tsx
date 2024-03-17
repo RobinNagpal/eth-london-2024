@@ -40,6 +40,8 @@ export const ContractUI = ({ contractName, className = "" }: ContractUIProps) =>
     );
   }
 
+  console.log("deployedContractData", deployedContractData);
+  console.log("contractName", contractName);
   return (
     <div className={`grid grid-cols-1 lg:grid-cols-6 px-6 lg:px-10 lg:gap-12 w-full max-w-7xl my-0 ${className}`}>
       <div className="col-span-5 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">

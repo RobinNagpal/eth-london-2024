@@ -22,19 +22,32 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
-  await deploy("YourContract", {
+  // await deploy("HyperlaneIncreaseSupplyCaps", {
+  //   gasLimit: 4000000,
+  //   estimatedGasLimit: 4000000,
+  //   from: deployer,
+  //   // Contract constructor arguments
+  //   args: [],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
+
+  await deploy("LZeroIncreaseSupplyCaps", {
+    gasLimit: 4000000,
+    estimatedGasLimit: 4000000,
     from: deployer,
     // Contract constructor arguments
-    args: [deployer],
+    args: [
+      "0x6edce65403992e310a62460808c4b910d972f10f", // https://docs.layerzero.network/contracts/endpoint-addresses#arbitrum-sepolia-testnet
+      "0x35f47c8507D302c4deb675cbdE2b7F9268A35f4A",
+    ],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
     autoMine: true,
   });
-
-  // Get the deployed contract to interact with it after deploying.
-  const yourContract = await hre.ethers.getContract<Contract>("YourContract", deployer);
-  console.log("👋 Initial greeting:", await yourContract.greeting());
 };
 
 export default deployYourContract;
